@@ -1,4 +1,5 @@
-\documentclass[%draft,
+\documentclass[
+    %draft,
     10pt,
     headinclude, footexclude,
     % twoside, % this produces strange margins!
@@ -17,7 +18,7 @@
 \setlength{\paperwidth}{15.72cm} \setlength{\paperheight}{20.95cm}
 %\typearea{calc} % without BCOR results to a DIV of 8 for 11pt
 \typearea[1.1cm]{15} % used 18, but 15 gives more space for the binding, TODO: check if 1.1 cm is the correct number
-
+\usepackage{kotex}
 \usepackage{scrlayer-scrpage}
 \setkomafont{pagehead}{\scshape\small}
 \setkomafont{pagenumber}{\scshape\small}
@@ -150,6 +151,7 @@
 \ \\
 \vspace{1cm}
 {\usekomafont{title}\mdseries\Large Fifth Edition}
+{\usekomafont{title}\mdseries\Large 한국어판}
 \cleardoublepage
 \end{flushleft}
 \newpage
@@ -162,6 +164,7 @@
 {\usekomafont{title}\Huge Digital Design with Chisel\\
 \bigskip
 {\usekomafont{title}\huge Fifth Edition}\\
+{\usekomafont{title}\huge 한국어판}\\
 \bigskip
 \bigskip
 \bigskip
@@ -238,20 +241,67 @@ Typeset by Martin Schoeberl.}
 \lstlistoflistings
 \endgroup
 
-\chapter{Foreword}
+\chapter{추천사}
 
 \medskip
 \medskip
 
-It is an exciting time to be in the world of digital design. With the end of Dennard Scaling and the slowing of Moore's Law, there has perhaps never been a greater need for innovation in the field. Semiconductor companies continue to squeeze out every drop of performance they can, but the cost of these improvements has been rising drastically. Chisel reduces this cost by improving productivity. If designers can build more in less time, while amortizing the cost of verification through reuse, companies can spend less on Non-Recurring Engineering (NRE). In addition, both students and individual contributors can innovate more easily on their own.
+% It is an exciting time to be in the world of digital design. With the end of Dennard Scaling 
+% and the slowing of Moore's Law, there has perhaps never been a greater need for innovation in the field. 
+% Semiconductor companies continue to squeeze out every drop of performance they can, but the cost of these improvements 
+% has been rising drastically. Chisel reduces this cost by improving productivity. If designers can build more in less time, 
+% while amortizing the cost of verification through reuse, companies can spend less on Non-Recurring Engineering (NRE). 
+% In addition, both students and individual contributors can innovate more easily on their own.
 
-Chisel is unlike most languages in that it is embedded in another programming language, Scala. Fundamentally, Chisel is a library of classes and functions representing the primitives necessary to express synchronous, digital circuits. A Chisel design is really a Scala program that \emph{generates} a circuit as it executes. To many, this may seem counterintuitive: ``Why not just make Chisel a stand-alone language like VHDL or SystemVerilog?'' My answer to this question is as follows: the software world has seen a substantial amount of innovation in design methodology in the past couple of decades. Rather than attempting to adapt these techniques to a new hardware language, we can simply \emph{use} a modern programming language and gain those benefits for free.
+디지털 디자인의 세계는 흥미진진한 시기입니다. 데나드 스케일링이 끝나고 무어의 법칙이 둔화되면서 이 분야에서 혁신이 그 어느 때보다 절실히 요구되고 있습니다. 
+반도체 회사들은 계속해서 성능을 최대한 끌어올리기 위해 노력하고 있지만, 이러한 개선에 드는 비용은 급격히 상승하고 있습니다. 
+Chisel은 생산성 향상을 통해 이러한 비용을 절감합니다. 설계자가 더 짧은 시간에 더 많은 것을 빌드하고 재사용을 통해 검증 비용을 상각할 수 있다면 기업은 
+비반복 엔지니어링(NRE)에 대한 지출을 줄일 수 있습니다. 또한 학생과 개인 기여자 모두 스스로 더 쉽게 혁신할 수 있습니다.
 
-A longstanding criticism of Chisel is that it is ``difficult to learn.'' Much of this perception is due to the prevalence of large, complex designs created by experts to solve their own research or commercial needs. When learning a popular language like C++, one does not start by reading the source code of GCC. Rather, there are a plethora of courses, textbooks, and other learning materials that cater toward newcomers. In \emph{Digital Design with Chisel}, Martin has created an important resource for anyone who wishes to learn Chisel.
+% Chisel is unlike most languages in that it is embedded in another programming language, Scala. 
+% Fundamentally, Chisel is a library of classes and functions representing the primitives necessary to express synchronous, 
+% digital circuits. A Chisel design is really a Scala program that \emph{generates} a circuit as it executes. 
+% To many, this may seem counterintuitive: ``Why not just make Chisel a stand-alone language like VHDL or SystemVerilog?'' 
+% My answer to this question is as follows: the software world has seen a substantial amount of innovation in design methodology 
+% in the past couple of decades. Rather than attempting to adapt these techniques to a new hardware language, 
+% we can simply \emph{use} a modern programming language and gain those benefits for free.
 
-Martin is an experienced educator, and it shows in the organization of this book. Starting with installation and primitives, he builds the reader's understanding like a building, brick-by-brick. The included exercises are the mortar that solidifies understanding, ensuring that each concept sets in the reader's mind. The book culminates with \emph{hardware generators} like a roof giving the rest of the structure purpose. At the end, the reader is left with the knowledge to build a simple, yet useful design: a RISC processor.
+Chisel은 다른 프로그래밍 언어인 Scala에 내장되어 있다는 점에서 대부분의 언어와 다릅니다. 
+기본적으로 Chisel은 동기식 디지털 회로를 표현하는 데 필요한 기본 요소를 나타내는 클래스와 함수의 라이브러리입니다. 
+Chisel 설계는 실제로 실행할 때 회로를 \emph{생성(generate)}하는 스칼라 프로그램입니다. 
+많은 사람이 ``왜 Chisel을 VHDL이나 SystemVerilog와 같은 독립형 언어로 만들지 않는가''라는 반직관적인 질문을 할 수 있습니다. 
+이 질문에 대한 제 대답은 다음과 같습니다. 소프트웨어 세계는 지난 수십 년 동안 설계 방법론에서 상당한 혁신을 이뤄냈습니다. 
+이러한 기술을 새로운 하드웨어 언어에 적용하려고 시도하는 대신 최신 프로그래밍 언어를 사용하면 이러한 이점을 무료로 얻을 수 있습니다.
 
-In \emph{Digital Design with Chisel}, Martin has laid a strong foundation for productive digital design. What you build with it is up to you.
+
+% A longstanding criticism of Chisel is that it is ``difficult to learn.'' 
+% Much of this perception is due to the prevalence of large, complex designs created by experts to solve their own research or commercial needs. 
+% When learning a popular language like C++, one does not start by reading the source code of GCC. 
+% Rather, there are a plethora of courses, textbooks, and other learning materials that cater toward newcomers. 
+% In \emph{Digital Design with Chisel}, Martin has created an important resource for anyone who wishes to learn Chisel.
+
+Chisel에 대한 오랜 비판 중 하나는 ``배우기 어렵다''는 것입니다. 
+이러한 인식의 대부분은 전문가가 자신의 연구 또는 상업적 요구를 해결하기 위해 만든 크고 복잡한 디자인이 널리 퍼져 있기 때문입니다. 
+C++와 같은 대중적인 언어를 배울 때 GCC의 소스 코드를 읽는 것부터 시작하지 않습니다. 
+오히려 초보자를 위한 강좌, 교재, 기타 학습 자료가 무수히 많습니다. 
+\emph{Digital Design with Chisel}에서 Martin은 Chisel을 배우고자 하는 모든 사람을 위한 중요한 리소스를 만들었습니다.
+
+% Martin is an experienced educator, and it shows in the organization of this book. 
+% Starting with installation and primitives, he builds the reader's understanding like a building, brick-by-brick. 
+% The included exercises are the mortar that solidifies understanding, ensuring that each concept sets in the reader's mind. 
+% The book culminates with \emph{hardware generators} like a roof giving the rest of the structure purpose. 
+% At the end, the reader is left with the knowledge to build a simple, yet useful design: a RISC processor.
+
+Martin은 경험이 풍부한 교육자이며, 이 책의 구성에서도 이를 잘 보여줍니다. 
+설치 및 기본 사항부터 시작하여 벽돌 하나하나를 쌓아 올리듯 독자의 이해를 돕습니다. 
+본 도서에 포함된 연습 문제는 독자의 머릿속에 각 개념이 자리 잡을 수 있도록 이해를 공고히 하는 모르타르 역할을 합니다. 
+이 책은 지붕과 같은 \emph{하드웨어 생성기}로 마무리되어 나머지 구조의 목적을 부여합니다. 
+마지막으로 독자는 간단하지만 유용한 설계인 RISC 프로세서를 구축할 수 있는 지식을 얻게 됩니다.
+
+% In \emph{Digital Design with Chisel}, Martin has laid a strong foundation for productive digital design. 
+% What you build with it is up to you.
+\emph{Digital Design with Chisel}에서 Martin은 생산적인 디지털 디자인을 위한 강력한 기반을 마련했습니다. 
+이 책으로 무엇을 만들지는 여러분에게 달려 있습니다.
 
 \medskip
 \noindent Jack Koenig\\
@@ -259,14 +309,23 @@ Chisel and FIRRTL Maintainer\\
 Staff Engineer, SiFive
 
 
-\chapter{Preface}
+\chapter{서문}
 
 % This text goes on the backside of the book, and in Amazon description
-This book is an introduction to digital design with the focus on using the hardware construction language Chisel. Chisel brings advances from software engineering, such as object-orientated and functional languages, into digital design.
 
-This book addresses hardware designers and software engineers. Hardware designers, with knowledge of Verilog or VHDL, can upgrade their productivity with a modern language for their next ASIC or FPGA design. Software engineers, with knowledge of object-oriented and functional programming, can leverage their knowledge to program hardware, for example, FPGA accelerators executing in the cloud.
+%This book is an introduction to digital design with the focus on using the hardware construction language Chisel. 
+%Chisel brings advances from software engineering, such as object-orientated and functional languages, into digital design.
+이 책은 하드웨어 기술 언어인 Chisel을 사용하는 데 중점을 둔 디지털 디자인 입문서입니다.  
+Chisel은 객체 지향 및 함수형 언어와 같은 소프트웨어 엔지니어링의 발전된 기술을 디지털 설계에 적용합니다.
 
-The approach of this book is to present small to medium-sized typical hardware components to explore digital design with Chisel.
+% This book addresses hardware designers and software engineers. 
+% Hardware designers, with knowledge of Verilog or VHDL, can upgrade their productivity with a modern language for their next ASIC or FPGA design. 
+이 책은 하드웨어 디자이너와 소프트웨어 엔지니어를 대상으로 합니다. 
+하드웨어 설계자는 Verilog 또는 VHDL에 대한 지식이 있으면 ASIC 또는 FPGA 설계를 위한 최신 언어를 사용하여 생산성을 업그레이드할 수 있습니다.  
+객체 지향 및 함수형 프로그래밍에 대한 지식이 있는 소프트웨어 엔지니어는 클라우드에서 실행되는 FPGA 가속기와 같은 하드웨어를 프로그래밍하는 데 자신의 지식을 활용할 수 있습니다.
+
+% The approach of this book is to present small to medium-sized typical hardware components to explore digital design with Chisel.
+이 책의 접근 방식은 중소 규모의 일반적인 하드웨어 구성 요소를 제시하여 Chisel로 디지털 디자인을 탐색하는 것입니다.
 
 % about me, backside
 
@@ -274,129 +333,150 @@ The approach of this book is to present small to medium-sized typical hardware c
 
 %Martin has been four times at UC Berkeley on research stays, where he has picked up Chisel and was in close contact with the developers of Chisel. He lead the research project T-CREST where most of the components have been written in Chisel.
 
-\section*{Foreword for the Second Edition}
+\section*{제2판 서문}
 
-As Chisel allows agile hardware design, so does open access and on-demand printing
-allow agile textbook publishing. Less than 6 months after the first edition of this book
-I am able to provide an improved and extended second edition.
+% As Chisel allows agile hardware design, so does open access and on-demand printing
+% allow agile textbook publishing. Less than 6 months after the first edition of this book
+% I am able to provide an improved and extended second edition.
+Chisel을 통해 민첩한 하드웨어 설계가 가능하듯이 오픈 액세스 및 주문형 인쇄를 통해 민첩한 교과서 출판이 가능합니다.  
+이 책의 초판이 나온 지 6개월이 채 지나지 않아 개선되고 확장된 2판을 제공할 수 있게 되었습니다.
 
-Besides minor fixes, the main changes in the second edition are as follows.
-The testing section has been extended. The sequential building blocks chapter contains
-more example circuits. A new chapter on input processing explains input synchronization,
-shows how to design a debouncing circuit, and how to filter a noisy input signal.
-The example designs chapter has been extended to show different implementations of a FIFO.
-The FIFO variations also show how to use type parameters and inheritance in digital design.
+% Besides minor fixes, the main changes in the second edition are as follows.
+% The testing section has been extended. The sequential building blocks chapter contains
+% more example circuits. A new chapter on input processing explains input synchronization,
+% shows how to design a debouncing circuit, and how to filter a noisy input signal.
+% The example designs chapter has been extended to show different implementations of a FIFO.
+% The FIFO variations also show how to use type parameters and inheritance in digital design.
+사소한 수정 사항 외에 두 번째 버전의 주요 변경 사항은 다음과 같습니다. 
+테스트 섹션이 확장되었습니다. 
+순차 빌딩 블록 장에 더 많은 예제 회로가 포함되어 있습니다. 
+입력 처리에 관한 새로운 장에서는 입력 동기화에 대해 설명하고 디바운싱 회로를 설계하는 방법과 잡음이 있는 입력 신호를 필터링하는 방법을 보여줍니다. 
+설계 예제 챕터가 확장되어 FIFO의 다양한 구현을 보여줍니다. 
+또한 디지털 설계에서 타입 파라미터와 상속을 사용하는 방법도 FIFO 변형으로 보여줍니다.
 
-\section*{Foreword for the Third Edition}
+\section*{제3판 서문}
 
-Chisel has been moving forward in the last year, so it is time for a new edition of the Chisel book.
-We changed all examples to the latest version of Chisel (3.5.3) and the recommended
-Scala version (2.12.13).
+%Chisel has been moving forward in the last year, so it is time for a new edition of the Chisel book.
+%We changed all examples to the latest version of Chisel (3.5.3) and the recommended
+%Scala version (2.12.13).
+지난 한 해 동안 Chisel은 계속 발전해 왔으며, 이제 Chisel-book의 새 버전이 나올 때입니다. 모든 예제를 최신 버전의 Chisel(3.5.3)과 권장되는 스칼라 버전(2.12.13)으로 변경했습니다.
 
-With Chisel 3.5 the testing environment \code{PeekPokeTester} as part of the \code{iotesters}
-package has been deprecated. Therefore, we have changed the testing description to the new
-\myref{https://github.com/ucb-bar/chiseltest}{ChiselTest} framework.
-As there are still many Chisel designs available that use the \code{PeekPokeTester},
-we have moved the description for it into the appendix.
+% With Chisel 3.5 the testing environment \code{PeekPokeTester} as part of the \code{iotesters} package has been deprecated. 
+% Therefore, we have changed the testing description to the new \myref{https://github.com/ucb-bar/chiseltest}{ChiselTest} framework.
+% As there are still many Chisel designs available that use the \code{PeekPokeTester}, we have moved the description for it into the appendix.
+Chisel 3.5에서는 \code{iotesters} 패키지의 일부인 테스트 환경 \code{PeekPokeTester}가 더 이상 지원되지 않습니다.
+따라서 테스트 설명을 새로운 \myref{https://github.com/ucb-bar/chiseltest}{ChiselTest} 프레임워크로 변경했습니다. 
+\code{PeekPokeTester}를 사용하는 Chisel 디자인이 여전히 많이 있으므로 이에 대한 설명을 부록으로 옮겼습니다.
 
-One of the fascinating aspects of the Chisel/Scala/Java environment is that we
-can piggyback on the available infrastructure to distribute open-source libraries.
-We can publish hardware components on Maven as simply as any other open-source Java library.
-Publishing on Maven means that a 3rd party component can be integrated into the
-compile flow with a single reference in the \code{build.sbt} configuration.
-This is the same process as how you include the chisel library for your design.
-We have added a section on how to publish a Chisel design on Maven Central.
+% One of the fascinating aspects of the Chisel/Scala/Java environment is that we
+% can piggyback on the available infrastructure to distribute open-source libraries.
+% We can publish hardware components on Maven as simply as any other open-source Java library.
+% Publishing on Maven means that a 3rd party component can be integrated into the
+% compile flow with a single reference in the \code{build.sbt} configuration.
+% This is the same process as how you include the chisel library for your design.
+% We have added a section on how to publish a Chisel design on Maven Central.
+Chisel/Scala/Java 환경의 흥미로운 측면 중 하나는 사용 가능한 인프라에 편승하여 오픈 소스 라이브러리를 배포할 수 있다는 점입니다. 하드웨어 구성 요소를 다른 오픈 소스 Java 라이브러리처럼 간단하게 Maven에 게시할 수 있습니다. Maven에 게시한다는 것은 \code{build.sbt} 구성에서 단일 참조를 사용하여 타사 구성 요소를 컴파일 흐름에 통합할 수 있다는 것을 의미합니다. 이는 디자인에 Chisel 라이브러리를 포함하는 방법과 동일한 프로세스입니다. Maven Central에 치즐 디자인을 게시하는 방법에 대한 섹션을 추가했습니다.
 
-We have improved the explanation of components with a simpler example.
+% We have improved the explanation of components with a simpler example.
+구성 요소에 대한 설명을 더 간단한 예제로 개선했습니다.
 
-Hardware \emph{generators} are written in Scala. Therefore, we have added a short
-section on Scala. We have extended the hardware generator chapter with a section
-on using functional programing to write generators.
+% Hardware \emph{generators} are written in Scala. Therefore, we have added a short
+% section on Scala. We have extended the hardware generator chapter with a section
+% on using functional programing to write generators.
+하드웨어 \emph{생성기(generators)}는 Scala로 작성되었습니다. 
+따라서 짧은 섹션을 추가했습니다. 
+하드웨어 제너레이터 챕터를 확장하여 함수형 프로그래밍을 사용하여 제너레이터를 작성하는 방법에 대한 섹션으로 하드웨어 제너레이터 챕터를 확장했습니다.
 
-The appendix has been extended with a list of reserved keywords and a list
-of acronyms.
+% The appendix has been extended with a list of reserved keywords and a list
+% of acronyms.
+부록이 예약 키워드 목록과 약어 목록으로 확장되었습니다.
 
-Hans Jakob Damsgaard has contributed the description on how to use external components, as
-so called \emph{black boxes}, and how to use memories for clock domain crossing
-(multi-clock memories).
+% Hans Jakob Damsgaard has contributed the description on how to use external components, as
+% so called \emph{black boxes}, and how to use memories for clock domain crossing
+% (multi-clock memories).
+한스 야콥 담스가드(Hans Jakob Damsgaard)가 외부 컴포넌트, 이른바 \emph{black boxes}를 사용하는 방법과 clock domain crossing(멀티클럭 메모리)에 메모리를 사용하는 방법에 대한 설명을 기고해 주셨습니다.
 
-\section*{Foreword for the Fourth Edition}
+\section*{제4판 서문}
 
-For the fourth edition we have switched to the actual Chisel version 3.5.4.
-We have added arbiter, priority encoder, and comparator to the chapter of
-combinational building blocks.
-We have extended the hardware generation chapter with more functional
-examples, including building a fair arbitration tree out of a simple 2 to 1
-arbitration circuits.
-We have added a new chapter on interconnect, bus interfaces,
-and how to connect an IO device as a memory mapped device.
-We have started a new chapter on debugging, testing and verification.
-The plan is to extend the chapter on this important topic in the next edition.
-We have extended the processor chapter with a more gentle introduction
-of a microprocessor, including a figure of the datapath.
+% For the fourth edition we have switched to the actual Chisel version 3.5.4.
+% We have added arbiter, priority encoder, and comparator to the chapter of
+% combinational building blocks.
+% We have extended the hardware generation chapter with more functional
+% examples, including building a fair arbitration tree out of a simple 2 to 1
+% arbitration circuits.
+% We have added a new chapter on interconnect, bus interfaces,
+% and how to connect an IO device as a memory mapped device.
+% We have started a new chapter on debugging, testing and verification.
+% The plan is to extend the chapter on this important topic in the next edition.
+% We have extended the processor chapter with a more gentle introduction
+% of a microprocessor, including a figure of the datapath.
+네 번째 버전에서는 Chisel 버전 3.5.4로 전환했습니다. 조합 빌딩 블록 챕터에 중재자, 우선순위 인코더, 비교기를 추가했습니다. 간단한 2 대 1 중재 회로로 공정한 중재 트리를 구축하는 등 더 많은 기능적 예제로 하드웨어 생성 챕터를 확장했습니다. 인터커넥트, 버스 인터페이스, 메모리 매핑된 장치로 IO 장치를 연결하는 방법에 대한 새로운 장을 추가했습니다. 디버깅, 테스트 및 검증에 대한 새로운 챕터가 시작되었습니다. 다음 판에서는 이 중요한 주제에 대한 장을 확장할 계획입니다. 프로세서 챕터를 확장하여 데이터 경로 그림을 포함하여 마이크로프로세서를 좀 더 부드럽게 소개했습니다.
 
-\section*{Foreword for the Fifth Edition}
+\section*{제5판 서문}
 
-For the fifth edition we have upgraded to the actual Chisel version 3.5.6 and Scala 2.13.
-To make room for more advanced topics, I have removed the two appendicitis on
-Chisel 2 and the PeekPokeTester. All projects that are actively maintained have finally
-moved to Chisel 3, at least with the compatibility layer. The PeekPokeTester has been
-deprecated with Chisel 3.5 and it is recommended to switch to ChiselTest.
-If needed, those two chapters are available in the older versions of the Chisel book,
-available as PDF at the \myref{https://www.imm.dtu.dk/~masca/chisel-book.html}{web page} for this book.
+% For the fifth edition we have upgraded to the actual Chisel version 3.5.6 and Scala 2.13.
+% To make room for more advanced topics, I have removed the two appendicitis on
+% Chisel 2 and the PeekPokeTester. All projects that are actively maintained have finally
+% moved to Chisel 3, at least with the compatibility layer. The PeekPokeTester has been
+% deprecated with Chisel 3.5 and it is recommended to switch to ChiselTest.
+% If needed, those two chapters are available in the older versions of the Chisel book,
+% available as PDF at the \myref{https://www.imm.dtu.dk/~masca/chisel-book.html}{web page} for this book.
+다섯 번째 버전에서는 Chisel 버전 3.5.6 및 Scala 2.13으로 업그레이드했습니다. 고급 주제를 위한 공간을 확보하기 위해 두 개의 부록을 삭제했습니다. Chisel 2와 PeekPokeTester. 활발하게 유지 관리되는 모든 프로젝트는 마침내 적어도 호환성 레이어만 남기고 Chisel 3로 옮겨졌습니다. PeekPokeTester는 Chisel 3.5에서 더 이상 사용되지 않으므로 ChiselTest로 전환하는 것이 좋습니다. 필요한 경우 이 두 챕터는 이전 버전의 Chisel 책에서 사용할 수 있습니다, \myref{https://www.imm.dtu.dk/~masca/chisel-book.html}{웹 페이지}에 있는 이 책의 PDF로 제공됩니다.
 
-The fifth edition does not include major changes; it is a consolidation version.
-We did a considerable proofreading for more clarity in writing. Chisel has added small convenience
-features (e.g., \code{ChiselEnum}) that we cover in this edition.
-We extended the processor chapter and updated the Leros code snippets
-to the actual version of Leros.
+% The fifth edition does not include major changes; it is a consolidation version.
+% We did a considerable proofreading for more clarity in writing. Chisel has added small convenience
+% features (e.g., \code{ChiselEnum}) that we cover in this edition.
+% We extended the processor chapter and updated the Leros code snippets
+% to the actual version of Leros.
+5판에는 큰 변경 사항이 포함되어 있지 않으며, 통합 버전입니다. 문장을 보다 명확하게 하기 위해 상당한 교정을 거쳤습니다. Chisel은 이번 버전에서 다루는 작은 편의 기능(예: \code{ChiselEnum})을 추가했습니다. 프로세서 챕터를 확장하고 Leros 코드 스니펫을 실제 Leros 버전으로 업데이트했습니다. 
 \todo{We should also show more Leros code.}
+
 
 
 \todo{What else has been changed. There should be some new Leros stuff.}
 
 
 
-\section*{Translations}
+\section*{번역}
 
-This book has been translated to Chinese, Japanese, and Vietnamese. All translations are available as free PDF
-from the books \myref{https://www.imm.dtu.dk/~masca/chisel-book.html}{web page}.
-I would like to thank Yuda Wang, Qiwei Sun, and Yun Chen for the Chinese translation;
-Seiji Munetoh, Masatoshi Tanabata, and Takaaki Hagino for the Japanese translation;
-and VieLe Duc Hung for the Vietnamese translation.
-If you are interested to translate this book into another language, feel free to do it and
-publish it under the same license. Please contact me then, so I can point to your translation.
+% This book has been translated to Chinese, Japanese, and Vietnamese. All translations are available as free PDF from the books \myref{https://www.imm.dtu.dk/~masca/chisel-book.html}{web page}.
+% I would like to thank Yuda Wang, Qiwei Sun, and Yun Chen for the Chinese translation; Seiji Munetoh, Masatoshi Tanabata, and Takaaki Hagino for the Japanese translation; and VieLe Duc Hung for the Vietnamese translation.
+% If you are interested to translate this book into another language, feel free to do it and publish it under the same license. Please contact me then, so I can point to your translation.
+이 책은 중국어, 일본어, 베트남어로 번역되었습니다. 모든 번역본은 \myref{https://www.imm.dtu.dk/~masca/chisel-book.html}{웹 페이지}에서 무료 PDF로 다운로드할 수 있습니다. 중국어 번역은 유다 왕, 치웨이 선, 윤 첸, 일본어 번역은 세이지 무네토, 마사토시 타나바타, 하기노 타카아키, 베트남어 번역은 비에 르 득 훙에게 감사의 말씀을 전합니다. 이 책을 다른 언어로 번역하고 싶으시면 자유롭게 번역하여 동일한 라이선스로 출판해 주세요. 그때 저에게 연락해 주시면 번역본을 참고할 수 있도록 도와드리겠습니다.
 
 
-\section*{Acknowledgements}
+\section*{감사의 말}
 
-I want to thank everyone who has worked on Chisel for creating such
-a cool hardware construction language. Chisel is so joyful to use and
-therefore worth writing a book about.
-I am thankful to the whole Chisel community, which is so welcoming and friendly
-and never tired to answer questions on Chisel.
+% I want to thank everyone who has worked on Chisel for creating such a cool hardware construction language. Chisel is so joyful to use and therefore worth writing a book about.
+% I am thankful to the whole Chisel community, which is so welcoming and friendly and never tired to answer questions on Chisel.
+% 
+% I would also like to thank my students in the last years of an advanced computer architecture course where most of them picked up Chisel for the final project.
+% Thank you for moving out of your comfort zone and taking up the journey of learning and using a bleeding-edge hardware description language.
+% Many of your questions have helped to shape this book.
+% 
+% It was a pleasure to use Chisel in the last three years of teaching a digital electronics course at the Technical University of Denmark.
+% I know it is a challenge to pickup Chisel and Java in parallel in the second semester. 
+% Thank you to all students from this course, who had on open mind to pickup a modern programming language for hardware description.
+% 
+% For the third edition, I would like to acknowledge Hans Jakob Damsgaard (\myref{https://github.com/hansemandse}{@hansemandse}) for rewriting all test code of this book to ChiselTest, adding ChiselTest to the testing chapter, adding the black box description, and an example for a multi-clock memory.
 
-I would also like to thank my students in the last years of an advanced computer
-architecture course where most of them picked up Chisel for the final project.
-Thank you for moving out of your comfort zone and taking up the journey of
-learning and using a bleeding-edge hardware description language.
-Many of your questions have helped to shape this book.
+멋진 하드웨어 구성 언어를 만들어준 Chisel에 참여한 모든 분들께 감사의 말씀을 전하고 싶습니다. Chisel은 사용하기가 너무 즐거워서 책을 쓸 가치가 있습니다.
+Chisel에 대한 질문에 지치지 않고 친절하게 답변해 주는 Chisel 커뮤니티 전체에 감사드립니다.
 
-It was a pleasure to use Chisel in the last three years of teaching a digital electronics
-course at the Technical University of Denmark.
-I know it is a challenge to pickup Chisel and Java in parallel in the second
-semester. Thank you to all students from this course, who had on open mind to
-pickup a modern programming language for hardware description.
+또한 고급 컴퓨터 아키텍처 과정의 마지막 해에 수강생 대부분이 최종 프로젝트를 위해 Chisel을 선택해준 학생들에게도 감사의 말을 전하고 싶습니다.
+익숙한 영역에서 벗어나 최첨단 하드웨어 기술 언어를 배우고 사용하는 여정에 동참해 주셔서 감사합니다.
+여러분의 많은 질문이 이 책을 완성하는 데 도움이 되었습니다.
 
-For the third edition, I would like to acknowledge Hans Jakob Damsgaard
-(\myref{https://github.com/hansemandse}{@hansemandse}) for rewriting
-all test code of this book to ChiselTest, adding ChiselTest to the testing chapter, adding the black
-box description, and an example for a multi-clock memory.
+지난 3년 동안 덴마크 공과대학교에서 디지털 전자공학 과정을 가르치면서 Chisel을 사용할 수 있어서 즐거웠습니다.
+2학기에 Chisel과 Java를 병행하는 것이 쉽지 않다는 것을 알고 있습니다. 
+하드웨어 기술을 위한 최신 프로그래밍 언어를 배우기 위해 열린 마음으로 임해준 이 과정의 모든 학생들에게 감사드립니다.
+
+3판의 경우, 이 책의 모든 테스트 코드를 치즐테스트로 재작성하고, 테스트 챕터에 치즐테스트를 추가하고, 블랙박스 설명과 멀티클럭 메모리에 대한 예제를 추가해준 Hans Jakob Damsgaard(\myref{https://github.com/hansemandse}{@hansemandse})에게 감사의 인사를 전합니다.
 
 
 \mainmatter
 
-\chapter{Introduction}
+\chapter{Chisel 시작하기}
 \label{sec:intro}
 
 This book is an introduction to digital system design using a modern hardware
